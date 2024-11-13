@@ -1,0 +1,46 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.83.128:3306/book-nest
+    username: root
+    password: fly142857
+  mail:
+    host: smtp.qq.com
+    port: 587
+    username: 3292736805@qq.com
+    password: ixkllgpruwbqcihc
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    default-encoding: UTF-8
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+email:
+  retrieve:
+    from: 3292736805@qq.com
+    subject: ItemManagement???
+    content: ???????????????????????????
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+
+logging:
+  level:
+    root: debug

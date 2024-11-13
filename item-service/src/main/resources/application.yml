@@ -1,0 +1,8 @@
+minio:
+  bucketName: item-pic
+  endpoint: http://101.200.15.215:9000
+  accessKeySecret: Okyq4TLNem6fQIUGPExKHkLWTbajfggzbqOZei8b
+  accessKeyId: hkpuh4lgK40WQJTotoan
+
+server:
+  port: 8082
