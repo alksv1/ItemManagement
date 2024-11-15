@@ -25,7 +25,6 @@ public class EmailUtil {
         message.setTo(to); // 收件人邮箱
         message.setSubject(emailProperties.getSubject()); // 邮件主题
         message.setText(emailProperties.getContent() + captcha); // 邮件内容
-
         mailSender.send(message); // 发送邮件
     }
 }
