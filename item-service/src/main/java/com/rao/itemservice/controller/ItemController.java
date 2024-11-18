@@ -113,4 +113,10 @@ public class ItemController {
         return Result.OK(quantity);
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @GetMapping("/api/items/search")
+    public Result<?> searchItem(@RequestParam String name) {
+        List<ItemVo> itemVoList = itemService.searchItem(name);
+        return Result.OK(itemVoList);
+    }
 }

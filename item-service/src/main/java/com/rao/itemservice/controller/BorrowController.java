@@ -51,8 +51,8 @@ public class BorrowController {
     //获取当前用户所有订单，用户订单量应该不多，所以直接查询所有
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/api/orders/me")
-    public Result<?> getCurrentUserOrders(@RequestParam(defaultValue = "1") Integer page,
-                                          @RequestParam(defaultValue = "30") Integer size) {
+    public Result<?> getCurrentUserOrders(@RequestParam(defaultValue = "1", required = false) Integer page,
+                                          @RequestParam(defaultValue = "30", required = false) Integer size) {
         List<OrderVo> orderVoList = orderService.getOrderInfoByUserId(
                 jwtUtil.getUserIdFromToken(
                         RequestHeaderUtil.getToken()
@@ -64,8 +64,8 @@ public class BorrowController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/api/orders")
     public Result<?> getUserOrdersByUserId(@RequestParam String userId,
-                                           @RequestParam(defaultValue = "1") Integer page,
-                                           @RequestParam(defaultValue = "30") Integer size) {
+                                           @RequestParam(defaultValue = "1", required = false) Integer page,
+                                           @RequestParam(defaultValue = "30", required = false) Integer size) {
         List<OrderVo> orderVoList = orderService.getOrderInfoByUserId(userId, page, size);
         return Result.OK(orderVoList);
     }

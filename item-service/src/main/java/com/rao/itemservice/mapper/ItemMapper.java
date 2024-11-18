@@ -21,4 +21,6 @@ public interface ItemMapper {
     List<ItemPo> selectItemAncestors(String itemId);
 
     int deleteItemById(String itemId);
+
+    List<ItemPo> searchItemByName(String name);
 }

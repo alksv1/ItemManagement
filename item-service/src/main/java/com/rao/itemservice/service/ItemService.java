@@ -1,6 +1,7 @@
 package com.rao.itemservice.service;
 
 import com.alibaba.fastjson2.JSON;
+import com.github.pagehelper.PageHelper;
 import com.rao.common.exception.ParameterErrorException;
 import com.rao.common.exception.ResourceAlreadyExistsException;
 import com.rao.common.exception.ResourceNotFoundException;
@@ -145,5 +146,12 @@ public class ItemService {
         Integer number = orderMapper.getLoansNumber(itemId);
         if (number == null) number = 0;
         return itemPo.getAvailableQuantity() + number;
+    }
+
+    public List<ItemVo> searchItem(String name) {
+        List<ItemPo> itemPoList = itemMapper.searchItemByName(name);
+        return itemPoList.stream()
+                .map(itemPo -> modelMapper.map(itemPo, ItemVo.class))
+                .toList();
     }
 }

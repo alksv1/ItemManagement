@@ -23,8 +23,8 @@ public class ItemLogController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/api/items/{itemId}/log")
     public Result<?> getItemLog(@PathVariable String itemId,
-                                @RequestParam(defaultValue = "1") Integer page,
-                                @RequestParam(defaultValue = "30") Integer size) {
+                                @RequestParam(defaultValue = "1", required = false) Integer page,
+                                @RequestParam(defaultValue = "30", required = false) Integer size) {
         List<ItemLogVo> itemLogVo = logService.getLogsByItemId(itemId, page, size);
         return Result.OK(itemLogVo);
     }

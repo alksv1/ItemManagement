@@ -46,4 +46,9 @@
         SELECT *
         FROM Ancestors;
     </select>
+    <select id="searchItemByName" resultType="com.rao.itemservice.po.ItemPo">
+        select *
+        from item
+        where match(name) against(#{name});
+    </select>
 </mapper>
