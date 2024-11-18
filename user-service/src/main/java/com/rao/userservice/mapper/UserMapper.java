@@ -18,4 +18,6 @@ public interface UserMapper {
     UserPo getUserById(String userId);
 
     List<UserPo> getUserList();
+
+    int updateRoleByEmail(String email, Integer role);
 }

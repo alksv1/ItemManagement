@@ -51,10 +51,6 @@ public class Result<T> {
         return new Result<>(3002, "资源已存在", null);
     }
 
-    public static <T> Result<T> resourceAlreadyBorrowed() {
-        return new Result<>(3003, "资源已被借出", null);
-    }
-
     // 系统错误
     public static <T> Result<T> databaseError() {
         return new Result<>(5001, "数据库错误", null);

@@ -22,5 +22,4 @@ public class GlobalCorsConfig {
 
         return new CorsWebFilter(source);
     }
-
 }

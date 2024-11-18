@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rao.itemservice.mapper.ItemLogMapper">
+
+
+    <insert id="InsertItemLog">
+        insert into item_log(user_id, target_id, method_name, num, args)
+        VALUES (#{userId}, #{targetId}, #{methodName}, #{num}, #{args})
+    </insert>
+    <select id="getLogsByItemId" resultType="com.rao.itemservice.po.ItemLogPo">
+        select *
+        from item_log
+        where target_id = #{itemId}
+    </select>
+</mapper>

@@ -19,6 +19,11 @@
         </set>
         where id = #{id}
     </update>
+    <update id="updateRoleByEmail">
+        update user
+        set role=#{role}
+        where email = #{email}
+    </update>
 
 
     <select id="getUserByEmail" resultType="com.rao.userservice.po.UserPo">

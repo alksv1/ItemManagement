@@ -1,6 +1,8 @@
 package com.rao.userservice.controller;
 
+import com.rao.common.exception.ParameterErrorException;
 import com.rao.common.util.Result;
+import com.rao.userservice.anno.LogAnno;
 import com.rao.userservice.service.UserService;
 import com.rao.userservice.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/user-service")
 public class AdminController {
+
+    //TODO 查看用户管理日志
 
     private final UserService userService;
 
@@ -28,10 +32,20 @@ public class AdminController {
         return Result.OK(userVoList);
     }
 
+    @LogAnno
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/api/user/{userId}/reset/password")
     public Result<?> resetPassword(@PathVariable String userId) {
         userService.resetPassword(userId);
+        return Result.OK(null);
+    }
+
+    @LogAnno
+    @PreAuthorize("hasRole('ROLE_ROOT')")
+    @PutMapping("/api/user/set-admin")
+    public Result<?> setAdmin(@RequestParam String email, @RequestParam Integer role) {
+        if (role != 1 && role != 2) throw new ParameterErrorException();
+        userService.setAdmin(email, role);
         return Result.OK(null);
     }
 }

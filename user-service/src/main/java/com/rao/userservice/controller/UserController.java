@@ -5,6 +5,7 @@ import com.rao.common.util.RequestHeaderUtil;
 import com.rao.common.util.Result;
 import com.rao.userservice.dto.ChangePasswordDto;
 import com.rao.userservice.dto.PasswordLoginDto;
+import com.rao.userservice.dto.UpdateEmailDto;
 import com.rao.userservice.service.UserService;
 import com.rao.userservice.vo.UserVo;
 import jakarta.validation.Valid;
@@ -64,5 +65,28 @@ public class UserController {
         String userId = jwtUtil.getUserIdFromToken(RequestHeaderUtil.getToken());
         UserVo userVo = userService.getUserInfoById(userId);
         return Result.OK(userVo);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PutMapping("/api/user/me/name")
+    public Result<?> updateMyName(@RequestParam String newName) {
+        String userId = jwtUtil.getUserIdFromToken(RequestHeaderUtil.getToken());
+        userService.updateNameById(userId, newName);
+        return Result.OK(null);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PutMapping("/api/user/me/email")
+    public Result<?> updateMyEmail(@Valid @RequestBody UpdateEmailDto updateEmailDto) {
+        userService.updateEmail(updateEmailDto);
+        return Result.OK(null);
+    }
+
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PutMapping("/api/user/me/logout")
+    public Result<?> logout() {
+        String userId = jwtUtil.getUserIdFromToken(RequestHeaderUtil.getToken());
+        userService.logout(userId);
+        return Result.OK(null);
     }
 }

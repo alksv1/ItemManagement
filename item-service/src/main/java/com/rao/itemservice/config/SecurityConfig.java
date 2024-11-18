@@ -1,4 +1,4 @@
-package com.rao.userservice.config;
+package com.rao.itemservice.config;
 
 import com.rao.common.filter.LoginFilter;
 import com.rao.common.util.JwtUtil;
