@@ -36,7 +36,7 @@ public class MinioClientPool {
         }
     }
 
-    // 可选：获取池的状态信息
+    // 获取池的状态信息
     public String getPoolStats() {
         return String.format("Active: %d, Idle: %d, Total: %d",
                 pool.getNumActive(), pool.getNumIdle(), pool.getMaxTotal());

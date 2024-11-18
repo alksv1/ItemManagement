@@ -60,7 +60,7 @@ public class Result<T> {
         return new Result<>(5002, "服务器内部错误", null);
     }
 
-    public static <T> Result<?> badGateway() {
+    public static <T> Result<T> badGateway() {
         return new Result<>(5003, "BadGateway", null);
     }
 }

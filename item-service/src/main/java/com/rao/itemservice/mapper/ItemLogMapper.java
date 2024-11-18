@@ -2,7 +2,6 @@ package com.rao.itemservice.mapper;
 
 import com.rao.itemservice.dto.ItemLogDto;
 import com.rao.itemservice.po.ItemLogPo;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

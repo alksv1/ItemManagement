@@ -1,7 +1,6 @@
 package com.rao.userservice.aspect;
 
 import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
 import com.rao.common.exception.ParameterErrorException;
 import com.rao.common.util.JwtUtil;
 import com.rao.common.util.RequestHeaderUtil;
